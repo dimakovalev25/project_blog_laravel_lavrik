@@ -1,7 +1,13 @@
 <h1>posts page</h1>
+<a href="/persons">to persons</a>
+<br/>
+<br/>
+<a href="/categories">to categories</a>
+<br/>
 <br/>
 <a href="/posts/create">create new post</a>
 <br/>
+
 <br/>
 @foreach($posts as $post)
     <hr>
