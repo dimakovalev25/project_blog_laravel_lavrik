@@ -8,13 +8,27 @@
 <form action="{{ route('category.update', [$category->id]) }}" method="post">
     @csrf
     @method('PUT')
-    title: <input type="text" name="title" value="{{ $category->title }}">
+    <div>
+        title: <input type="text" name="title" value="{{ old('slug') ??  $category->title }}">
+        @error('title')
+        <div style="color: red">{{$message}}</div> @enderror
+    </div>
     <br/>
     <br/>
-    slug: <input type="text" name="slug" value="{{ $category->slug }}">
+    <div>
+        slug: <input type="text" name="slug" value="{{ old('slug') ?? $category->slug }}">
+        @error('slug')
+        <div style="color: red">{{$message}}</div> @enderror
+
+    </div>
     <br/>
     <br/>
-    description:  <input type="text" name="description" value="{{ $category->description }}">
+    <div>
+        description: <input type="text" name="description" value="{{ old('slug') ?? $category->description }}">
+        @error('description')
+        <div style="color: red">{{$message}}</div> @enderror
+
+    </div>
     <br/>
     <br/>
     <button type="submit">update</button>

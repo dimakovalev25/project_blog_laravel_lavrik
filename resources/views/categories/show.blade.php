@@ -5,6 +5,7 @@
 <br/>
 <hr>
 <h3>category: {{ $category->title }}</h3>
+<h3>slug: {{ $category->slug }}</h3>
 <em>description:  {{ $category->description }}</em>
 <hr>
 <br/>

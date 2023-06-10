@@ -19,6 +19,13 @@ class Categories extends Controller
 
     public function store(Request $request)
     {
+        $request->validate([
+            'slug' => 'required|min:2|max:100|unique:categories',
+            'title' => 'required|min:2|max:100',
+            'description' => 'required',
+        ]);
+
+
         $data = $request->only(['title', 'slug', 'description']);
         Category::create($data);
 
@@ -44,6 +51,13 @@ class Categories extends Controller
 
     public function update(Request $request, string $id)
     {
+
+        $request->validate([
+            'slug' => 'required|min:2|max:100|unique:categories',
+            'title' => 'required|min:2|max:100',
+            'description' => 'required',
+        ]);
+
         $category = Category::findOrFail($id);
         $data = $request->only('title', 'slug', 'description');
         $category->update($data);

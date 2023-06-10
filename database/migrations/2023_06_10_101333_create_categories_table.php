@@ -14,6 +14,8 @@ return new class extends Migration
             $table->string('slug',128)->unique();
             $table->string('title',256);
             $table->text('description');
+
+            $table->softDeletes();
         });
     }
     public function down(): void

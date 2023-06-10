@@ -7,13 +7,25 @@
 
 <form action="{{ route('category.store') }}" method="post">
     @csrf
-    title: <input type="text" name="title">
+    <div>
+        title: <input type="text" name="title" value="{{old('title')}}">
+        @error('title')
+        <div style="color: red">{{$message}}</div> @enderror
+    </div>
     <br/>
     <br/>
-    slug:  <input type="text" name="slug">
+    <div>
+        slug: <input type="text" name="slug" value="{{old('slug')}}">
+        @error('slug')
+        <div style="color: red">{{$message}}</div> @enderror
+    </div>
     <br/>
     <br/>
-    description:  <input type="text" name="description">
+    <div>
+        descr: <input type="text" name="description" value="{{old('description')}}">
+        @error('description')
+        <div style="color: red">{{$message}}</div> @enderror
+    </div>
     <br/>
     <br/>
     <button type="submit">send</button>

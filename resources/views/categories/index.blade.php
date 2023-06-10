@@ -9,8 +9,9 @@
 <br/>
 @foreach($categories as $category)
     <hr>
-    <h3>{{ $category->title }}</h3>
-    <h5>{{ $category->description }}</h5>
+    <h3>name: {{ $category->title }}</h3>
+    <h3>slug: {{ $category->slug }}</h3>
+    <h5>description:  {{ $category->description }}</h5>
     <a href="/categories/{{ $category->id}}">more...</a>
 
     <hr>
