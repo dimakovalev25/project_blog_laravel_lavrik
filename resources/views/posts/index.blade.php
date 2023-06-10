@@ -1,8 +1,6 @@
 <h1>posts page</h1>
-<a href="{{route('persons.index')}}">to persons</a>
 <br/>
-<br/>
-<a href="{{route('categories.index')}}">to categories</a>
+<a href="{{route('category.index')}}">to categories</a>
 <br/>
 <br/>
 <a href="{{route('post.create')}}">create new post</a>
