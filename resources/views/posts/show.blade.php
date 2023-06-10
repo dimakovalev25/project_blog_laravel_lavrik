@@ -1,6 +1,6 @@
 <h1>post page</h1>
 <br/>
-<a href="/posts">to posts...</a>
+<a href="{{route('posts.index')}}">to posts...</a>
 <br/>
 <br/>
 <hr>

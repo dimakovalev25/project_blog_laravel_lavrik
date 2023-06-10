@@ -1,11 +1,11 @@
 <h1>posts page</h1>
-<a href="/persons">to persons</a>
+<a href="{{route('persons.index')}}">to persons</a>
 <br/>
 <br/>
-<a href="/categories">to categories</a>
+<a href="{{route('categories.index')}}">to categories</a>
 <br/>
 <br/>
-<a href="/posts/create">create new post</a>
+<a href="{{route('post.create')}}">create new post</a>
 <br/>
 
 <br/>

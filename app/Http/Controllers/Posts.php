@@ -41,6 +41,8 @@ class Posts extends Controller
     }
 
     public function show($id){
+        return "posts with id = $id";
+
         return view('posts.show', ['post' => Post::findOrFail($id)] );
     }
 }
