@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CategoriesAdmin;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Posts;
 use App\Http\Controllers\Persons;
@@ -31,3 +32,8 @@ Route::prefix('/categories')->controller(Categories::class)->group(function (){
     Route::put('/{id}', 'update')->name('category.update');
     Route::delete('/{id}', 'destroy')->name('category.destroy');
 });
+
+//Route::prefix('/catadmin')->controller(CategoriesAdmin::class)->group(function (){
+//    Route::get('/', 'index')->name('category.index');
+//    Route::get('/{slug}', 'show')->name('category.show');
+//});
