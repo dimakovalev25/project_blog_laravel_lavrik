@@ -20,5 +20,21 @@ class CategoriesAdmin extends Controller
         return view('categories.show', ['category' => Category::findOrFail($id)]);
     }
 
+    public function trashlist()
+    {
+        $trashedcategory = Category::onlyTrashed()->get();
+        return view('catadmin.index', compact('trashedcategory'));
+    }
 
+    public function restore($id){
+        $category= Category::onlyTrashed()->findOrFail($id);
+        $category->restore();
+        return view('categories.index', ['categories' => Category::all()]);
+
+    }
+
+    public function destroy($id){
+        $category= Category::onlyTrashed()->findOrFail($id)->forceDelete();
+        return view('categories.index', ['categories' => Category::all()]);
+    }
 }

@@ -5,6 +5,9 @@
 <br/>
 <a href="{{route('category.create')}}">create new category</a>
 <br/>
+<br/>
+<a href="{{route('catadmin.trash')}}">deleted categories</a>
+<br/>
 
 <br/>
 @foreach($categories as $category)

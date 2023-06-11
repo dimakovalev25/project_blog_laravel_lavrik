@@ -33,7 +33,10 @@ Route::prefix('/categories')->controller(Categories::class)->group(function (){
     Route::delete('/{id}', 'destroy')->name('category.destroy');
 });
 
-//Route::prefix('/catadmin')->controller(CategoriesAdmin::class)->group(function (){
-//    Route::get('/', 'index')->name('category.index');
-//    Route::get('/{slug}', 'show')->name('category.show');
-//});
+Route::prefix('/catadmin')->controller(CategoriesAdmin::class)->group(function (){
+    Route::get('/', 'index')->name('catadmin.index');
+    Route::get('/trash', 'trashlist')->name('catadmin.trash');
+    Route::put('/{category}/restore', 'restore')->whereNumber(['category'])->name('catadmin.restore');
+    Route::delete('/{category}/destroy', 'destroy')->whereNumber(['category'])->name('catadmin.destroy');
+    Route::get('/{slug}', 'show')->name('catadmin.show');
+});
