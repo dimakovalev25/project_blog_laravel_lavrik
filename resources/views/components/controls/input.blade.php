@@ -8,10 +8,15 @@
 
 ])
 
+@php
+    $id = $name . bin2hex(random_bytes(6));
+//    dd($id)
+@endphp
 
-<label for="{{ $name }}"
+
+<label for="{{ $id }}"
        class="form-label"> {{$label}} </label>
-<input id="{{ $name }}"
+<input id="{{ $id }}"
        type="text"
        class="form-control w-25"
        name="{{ $name }}"
