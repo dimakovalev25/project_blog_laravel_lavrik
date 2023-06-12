@@ -3,7 +3,9 @@
 @props([
     'name' => '',
     'label' => '',
-    'type' => 'text'
+    'type' => 'text',
+    'id' => null,
+    'defval' => ''
 ])
 
 @php
@@ -18,7 +20,7 @@
        type="{{$type}}"
        class="form-control w-25"
        name="{{ $name }}"
-       value="{{old($name)}}">
+       value="{{old($name) ?? $defval}}">
 @error($name)
 <div style="color: red">{{$message}}</div>
 @enderror

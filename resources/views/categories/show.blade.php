@@ -16,7 +16,7 @@
 <form method="post" action="{{ route('category.destroy', [$category->id]) }}">
     @csrf
     @method('DELETE')
-    <button>delete category!!!</button>
+    <button class="btn btn-danger">delete category!!!</button>
 </form>
 
 </x-layouts.base>
