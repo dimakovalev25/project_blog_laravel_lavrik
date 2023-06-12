@@ -3,6 +3,7 @@
 @props([
     'name' => '',
     'label' => '',
+    'type' => 'text'
 
 
 
@@ -17,10 +18,10 @@
 <label for="{{ $id }}"
        class="form-label"> {{$label}} </label>
 <input id="{{ $id }}"
-       type="text"
+       type="{{$type}}"
        class="form-control w-25"
        name="{{ $name }}"
        value="{{old($name)}}">
 @error($name)
-    <div style="color: red">{{$message}}</div>
+<div style="color: red">{{$message}}</div>
 @enderror
