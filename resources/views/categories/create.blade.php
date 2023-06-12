@@ -20,26 +20,40 @@
 
     <form action="{{ route('category.store') }}" method="post">
         @csrf
-        <div class="mb-3">
-            <label class="form-label">Title:</label>
-            <input type="text" class="form-control" placeholder="title" value="{{old('title')}}">
-            @error('title')
-            <div style="color: red">{{$message}}</div> @enderror
-        </div>
+
+        <x-controls.input name="title" label="Title:"></x-controls.input>
         <br/>
-        <div>
-            slug: <input type="text" name="slug" value="{{old('slug')}}">
-            @error('slug')
-            <div style="color: red">{{$message}}</div> @enderror
-        </div>
+
+        <x-controls.input name="slug" label="Slug:"></x-controls.input>
         <br/>
-        <div>
-            descr: <input type="text" name="description" value="{{old('description')}}">
-            @error('description')
-            <div style="color: red">{{$message}}</div> @enderror
-        </div>
+
+        <x-controls.input name="description" label="Description:"></x-controls.input>
         <br/>
-        <button type="submit">send</button>
+
+{{--        <div class="mb-3">--}}
+{{--            <label class="form-label">Title:</label>--}}
+{{--            <input type="text" class="form-control w-25" name="title" value="{{old('title')}}">--}}
+{{--            @error('title')--}}
+{{--            <div style="color: red">{{$message}}</div> @enderror--}}
+{{--        </div>--}}
+
+
+{{--        <div>--}}
+{{--            <label class="form-label">Slug:</label>--}}
+{{--            <input class="form-control w-25" type="text" name="slug" value="{{old('slug')}}">--}}
+{{--            @error('slug')--}}
+{{--            <div style="color: red">{{$message}}</div> @enderror--}}
+{{--        </div>--}}
+
+{{--        <div>--}}
+{{--            <label class="form-label">Description:</label>--}}
+{{--            <input class="form-control w-25" type="text" name="description" value="{{old('description')}}">--}}
+{{--            @error('description')--}}
+{{--            <div style="color: red">{{$message}}</div> @enderror--}}
+{{--        </div>--}}
+
+        <br/>
+        <button class="btn btn-primary" type="submit">send</button>
     </form>
 </div>
 </body>
