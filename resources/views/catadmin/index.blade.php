@@ -1,11 +1,7 @@
+<x-layouts.base title="category">
+
 <h1>deleted categories page</h1>
 <br/>
-<a href="{{route('post.index')}}">to posts</a>
-<br/>
-<br/>
-<a href="{{route('category.index')}}">to categories...</a>
-<br/>
-
 <br/>
 @foreach($trashedcategory as $category)
     <hr>
@@ -31,3 +27,4 @@
     <hr>
 
 @endforeach
+</x-layouts.base>

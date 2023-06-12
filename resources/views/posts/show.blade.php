@@ -1,6 +1,6 @@
+<x-layouts.base title="category">
+
 <h1>post page</h1>
-<br/>
-<a href="{{route('post.index')}}">to posts...</a>
 <br/>
 <br/>
 <hr>
@@ -9,3 +9,4 @@
 <em>{{ $post->created_at }}</em>
 
 
+</x-layouts.base>

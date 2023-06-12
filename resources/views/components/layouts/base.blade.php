@@ -3,7 +3,7 @@
 
 ])
 
-<!doctype html>
+    <!doctype html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -15,17 +15,28 @@
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
 <body>
-    <header>
-        <div class="container">header</div>
-    </header>
-    <div>
-        <div class="container">
-            <main>{{$slot}}</main>
+
+<header>
+    <div class="container"></div>
+</header>
+<div>
+    <div class="container">
+        <div class="row">
+            <div class="col col-12 col-md-3">
+
+{{--                <x-layouts.navlink></x-layouts.navlink>--}}
+                <x-layouts.navlink :links="  array(['title'=>'home','href'=>'/','class'=>'active'],['title'=>'posts','href'=>'/posts','class'=>''],['title'=>'categories','href'=>'/categories','class'=>''])  "></x-layouts.navlink>
+
+            </div>
+            <main class="col col-12 col-md-9">
+                {{$slot}}
+            </main>
         </div>
     </div>
-    <footer>
-        <div class="container">footer</div>
-    </footer>
+</div>
+<footer>
+    <div class="container"></div>
+</footer>
 </body>
 </html>
 

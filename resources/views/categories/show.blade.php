@@ -1,6 +1,6 @@
+<x-layouts.base title="categories">
+
 <h1>category page</h1>
-<br/>
-<a href="{{route('category.index')}}">to categories...</a>
 <br/>
 <br/>
 <hr>
@@ -19,4 +19,4 @@
     <button>delete category!!!</button>
 </form>
 
-
+</x-layouts.base>

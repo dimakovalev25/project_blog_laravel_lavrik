@@ -4,9 +4,6 @@
     'name' => '',
     'label' => '',
     'type' => 'text'
-
-
-
 ])
 
 @php
