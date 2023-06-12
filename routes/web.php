@@ -5,6 +5,9 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Posts;
 use App\Http\Controllers\Persons;
 use App\Http\Controllers\Categories;
+use App\Http\Controllers\Main;
+
+Route::get('/', [Main::class, 'index'])->name('welcom');
 
 Route::get('/persons', [Persons::class, 'index'])->name('persons.index');
 
