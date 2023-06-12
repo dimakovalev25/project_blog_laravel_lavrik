@@ -33,6 +33,8 @@ class CategoriesAdmin extends Controller
 
     }
 
+
+
     public function destroy($id){
         $category= Category::onlyTrashed()->findOrFail($id)->forceDelete();
         return view('categories.index', ['categories' => Category::all()]);
