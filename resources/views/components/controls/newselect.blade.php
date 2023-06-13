@@ -9,7 +9,6 @@
 
 @php
     $id = $name . bin2hex(random_bytes(6));
-
 @endphp
 
 <label for="{{ $id }}" class="mt-3 w-100 mb-2 form-group"> {{$label}}

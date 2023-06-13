@@ -24,7 +24,11 @@ Route::post('/posts', [Posts::class, 'store'])->name('post.store');
 //Route::put('/categories/{id}', [Categories::class, 'update']);
 //Route::delete('/categories/{id}', [Categories::class, 'destroy']);
 
-//Route::resource('categories', Categories::class)->name('categories.index');
+//Route::resource('categories', PostsController::class)->parameters(['posts' => 'id']);
+
+
+//universal route! create all paths
+//Route::resource('posts', Categories::class)->name('categories.index');
 
 Route::prefix('/categories')->controller(Categories::class)->group(function (){
     Route::get('/', 'index')->name('category.index');

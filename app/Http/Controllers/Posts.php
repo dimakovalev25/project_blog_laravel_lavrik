@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Category;
 use Illuminate\Http\Request;
 use App\Models\Post;
 
@@ -20,12 +21,17 @@ class Posts extends Controller
 
     public function create()
     {
+
+//        $data = Category::orderBy('title')->get()->toArray();
+//        $data = Category::pluck('id', 'title');
+
         return view('posts.create');
     }
 
     public function store(Request $request)
     {
-        $data = $request->only(['title', 'content']);
+        $data = $request->only(['title', 'content', 'category_id']);
+//        dd($data);
         Post::create($data);
         return redirect('/posts');
 
