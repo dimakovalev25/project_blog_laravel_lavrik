@@ -24,8 +24,19 @@
         <div class="row">
             <div class="col col-12 col-md-3">
 
+                <x-naws.link route="welcom" :params="[]">home</x-naws.link>
+                <br>
+                <x-naws.link route="persons.index" :params="[]">persons</x-naws.link>
+                <br>
+                <x-naws.link route="post.index" :params="[]">posts</x-naws.link>
+                <br>
+                <x-naws.link route="category.index" :params="[]">categories</x-naws.link>
+                <br>
+
 {{--                <x-layouts.navlink></x-layouts.navlink>--}}
-                <x-layouts.navlink :links="  array(['title'=>'home','href'=>'/','class'=>'active'],['title'=>'posts','href'=>'/posts','class'=>''],['title'=>'categories','href'=>'/categories','class'=>''])  "></x-layouts.navlink>
+
+{{--                //old navbar--}}
+{{--                <x-layouts.navlink :links="  array(['title'=>'home','href'=>'/','class'=>'active'],['title'=>'posts','href'=>'/posts','class'=>''],['title'=>'categories','href'=>'/categories','class'=>''])  "></x-layouts.navlink>--}}
 
             </div>
             <main class="col col-12 col-md-9">

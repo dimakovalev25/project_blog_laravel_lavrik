@@ -1,3 +1,8 @@
+<x-layouts.base title="persons">
+
+
+
+
 <h1>persons page</h1>
 <br/>
 <a href="{{route('persons.index')}}">create new person</a>
@@ -10,3 +15,4 @@
     <em>age:   {{ $person->age }}</em>
     <hr>
 @endforeach
+</x-layouts.base>
