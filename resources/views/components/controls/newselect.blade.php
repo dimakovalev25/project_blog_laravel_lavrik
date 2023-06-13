@@ -23,5 +23,6 @@
         <option value="{{ $value }}"> {{ $text}} </option>
     @endforeach
 
+
 </select>
 </label>
