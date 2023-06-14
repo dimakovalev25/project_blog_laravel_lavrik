@@ -11,6 +11,8 @@ class Posts extends Controller
 
     public function index()
     {
+
+        dd(Post::recent());
 //        $post = new Post();
 //        $post->title = 'test';
 //        $post->content = 'test content';
