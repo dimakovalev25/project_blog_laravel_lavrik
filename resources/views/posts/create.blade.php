@@ -23,7 +23,7 @@
 {{--        <x-controls.select  :options="  array(['title'=>'title1','value'=>'value1'],['title'=>'title2','value'=>'value2'],['title'=>'title3','value'=>'value3'])"--}}
 {{--        ></x-controls.select>--}}
 
-        <x-controls.select :options="$categories"></x-controls.select>
+        <x-controls.select name="category_id" :options="$categories"></x-controls.select>
 
         <br/>
 

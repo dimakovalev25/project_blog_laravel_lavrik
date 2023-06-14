@@ -19,4 +19,7 @@
     <button class="btn btn-danger">delete category!!!</button>
 </form>
 
+
+{{--    {{ dd( $category->posts ) }}--}}
+
 </x-layouts.base>

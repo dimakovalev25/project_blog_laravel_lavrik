@@ -30,8 +30,14 @@ class Posts extends Controller
 
     public function store(Request $request)
     {
+        $request->validate([
+            'title' => 'required|min:2|max:100',
+            'content' => 'required',
+            'category_id' => 'required',
+        ]);
+
+
         $data = $request->only(['title', 'content', 'category_id']);
-//        dd($data);
         Post::create($data);
         return redirect('/posts');
 
@@ -43,7 +49,7 @@ class Posts extends Controller
 //        $post->save();
 //        dd('done!');
 
-        return view('posts.store');
+//        return view('posts.store');
     }
 
     public function show($id){
@@ -51,4 +57,31 @@ class Posts extends Controller
 
         return view('posts.show', ['post' => Post::findOrFail($id)] );
     }
+    public function edit(string $id)
+    {
+        $post = Post::findOrFail($id);
+        return view('posts.edit', compact('post'));
+    }
+
+    public function update(Request $request, string $id)
+    {
+
+        $request->validate([
+            'title' => 'required|min:2|max:100',
+            'content' => 'required|min:2',
+            'category_id' => 'required',
+        ]);
+
+        $post = Post::findOrFail($id);
+        $data = $request->only('title', 'content', 'category_id');
+        $post->update($data);
+        return redirect()->route('post.index');
+    }
+
+    public function destroy(string $id){
+        $post = Post::findOrFail($id);
+        $post->delete();
+        return redirect()->route('post.index');
+    }
+
 }
