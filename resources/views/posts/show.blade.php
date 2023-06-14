@@ -1,6 +1,7 @@
 @php
 //    $comments = \App\Models\Comment::where('post_id', '=', $post->id)->get();
     $cmt = $post->comment;
+    $comments = $post->comment()->orderByDesc('created_at')->get();
 //    dd($cmt);
 @endphp
 
@@ -40,7 +41,7 @@
     <br/>
 
     <ul class="list-group">
-        <?php foreach($cmt as $key=>$value): ?>
+        <?php foreach($comments as $key=>$value): ?>
             <li class="list-group-item"><?= $value['content']; ?></li>
         <?php endforeach; ?>
     </ul>
