@@ -1,26 +1,41 @@
 <x-layouts.base title="comments">
     <h3>all comments</h3>
-
-{{--    @dd($comments)--}}
+{{--    {{  dd($comment->getpost)}}--}}
+    {{--    @dd($comments)--}}
 
     @foreach($comments as $comment)
         <div class="alert alert-danger">
 
+            <div>
+               data: {{ $comment->created_at}}
+               text: "{{ $comment->content }}"
+                <div style="display: flex">
 
-            {{ $comment->created_at}}
-            {{ $comment->content }}
-            <a href="{{ route('post.show', [$comment->post_id]) }}">
-                {{ $comment->content }}
+                <a href="{{ route('post.show', [$comment->post_id]) }}">
+                    link to original post
+                </a>
 
-            </a>
+                </div>
+            </div>
 
+            <div>
 
+                <form action="{{route('comment.update', [$comment->id])}}" method="post">
+                    @csrf
+                    @method('PUT')
+                    <button type="submit" class="btn btn-primary">Approve</button>
+                </form>
+
+                <form action="{{route('comment.destroy', [$comment->id])}}" method="post">
+                    @csrf
+                    @method('DELETE')
+                    <button type="submit" class="btn btn-danger">Delete</button>
+                </form>
+
+            </div>
         </div>
 
-
     @endforeach
-
-
 
 
 </x-layouts.base>

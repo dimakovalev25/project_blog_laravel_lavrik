@@ -13,6 +13,8 @@ Route::get('/', [Main::class, 'index'])->name('welcom');
 
 Route::prefix('/comments')->controller(Comments::class)->group(function () {
     Route::get('/', 'index')->name('comment.index');
+    Route::put('/{id}/update', 'update')->name('comment.update');
+    Route::delete('/{id}','destroy')->name('comment.destroy');
 });
 
 Route::post('/posts/{id}', [Comments::class, 'store'])->name('comment.store');
