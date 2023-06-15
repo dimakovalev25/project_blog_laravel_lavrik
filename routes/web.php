@@ -10,17 +10,10 @@ use App\Http\Controllers\Comments;
 
 Route::get('/', [Main::class, 'index'])->name('welcom');
 
-Route::prefix('/persons')->controller(Persons::class)->group(function () {
-    Route::get('/', 'index')->name('persons.index');
 
+Route::prefix('/comments')->controller(Comments::class)->group(function () {
+    Route::get('/', 'index')->name('comment.index');
 });
-
-//Route::prefix('/comments')->controller(Comments::class)->group(function () {
-//    Route::get('/', 'index')->name('comment.index');
-//    Route::get('/create', 'create')->name('comment.create');
-//    Route::get('/{id}', 'show')->name('comment.show');
-//    Route::post('/', 'store')->name('comment.store');
-//});
 
 Route::post('/posts/{id}', [Comments::class, 'store'])->name('comment.store');
 

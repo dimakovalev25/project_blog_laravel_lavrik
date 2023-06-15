@@ -11,7 +11,12 @@ class Comments extends Controller
 {
     public function index()
     {
-        return view('posts.index', ['posts' => Post::all()]);
+
+        $comments = Comment::orderByDesc('created_at')->get();
+        return view('comments.index', compact('comments'));
+
+//        return view('comments.index', ['comments' => Comment::all()]);
+//        return view('posts.index', ['posts' => Post::all()]);
     }
 
 

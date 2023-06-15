@@ -26,8 +26,6 @@
 
                 <x-naws.link route="welcom" :params="[]">home</x-naws.link>
                 <br>
-                <x-naws.link route="persons.index" :params="[]">persons</x-naws.link>
-                <br>
                 <x-naws.link route="post.index" :params="[]">posts</x-naws.link>
                 <br>
                 <x-naws.link route="category.index" :params="[]">categories</x-naws.link>

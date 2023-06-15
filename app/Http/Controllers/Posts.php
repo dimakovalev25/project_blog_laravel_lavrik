@@ -8,27 +8,13 @@ use App\Models\Post;
 
 class Posts extends Controller
 {
-
     public function index()
     {
-
-//        dd(Post::recent());
-
-
-//        $post = new Post();
-//        $post->title = 'test';
-//        $post->content = 'test content';
-//        $post->save();
-
         return view('posts.index', ['posts' => Post::all()]);
     }
 
     public function create()
     {
-
-//        $data = Category::orderBy('title')->get()->toArray();
-//        $data = Category::pluck('id', 'title');
-
         return view('posts.create');
     }
 
@@ -40,27 +26,19 @@ class Posts extends Controller
             'category_id' => 'required',
         ]);
 
-
         $data = $request->only(['title', 'content', 'category_id']);
         Post::create($data);
         return redirect('/posts');
-
-//        dd($request);   bad practice
-//        $args = $request->all();
-//        $post = new Post();
-//        $post->title = $args['title'];
-//        $post->content = $args['content'];
-//        $post->save();
-//        dd('done!');
-
-//        return view('posts.store');
     }
 
-    public function show($id){
-//        return "posts with id = $id";
-
-        return view('posts.show', ['post' => Post::findOrFail($id)] );
+    public function show($id)
+    {
+        $post = Post::findOrFail($id);
+        $comments = $post->comment()->orderByDesc('created_at')->get();
+//        dd($comments);
+        return view('posts.show', compact('post', 'comments'));
     }
+
     public function edit(string $id)
     {
         $post = Post::findOrFail($id);
@@ -82,7 +60,8 @@ class Posts extends Controller
         return redirect()->route('post.index');
     }
 
-    public function destroy(string $id){
+    public function destroy(string $id)
+    {
         $post = Post::findOrFail($id);
         $post->delete();
         return redirect()->route('post.index');

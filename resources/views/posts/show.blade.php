@@ -1,8 +1,7 @@
 @php
-//    $comments = \App\Models\Comment::where('post_id', '=', $post->id)->get();
-    $cmt = $post->comment;
-    $comments = $post->comment()->orderByDesc('created_at')->get();
-//    dd($cmt);
+    //    $comments = \App\Models\Comment::where('post_id', '=', $post->id)->get();
+    //    $cmt = $post->comment;
+        $comments = $post->comment()->orderByDesc('created_at')->get();
 @endphp
 
 <x-layouts.base title="category">
@@ -31,7 +30,7 @@
     <form method="post" action="{{ route('comment.store', [$post->id]) }}">
         @csrf
         <x-controls.input defval="{{ null }}" name="content" label="add comment" type="text"></x-controls.input>
-{{--        <input class="form-control w-25" type="text" name="content" label="add comment">--}}
+        {{--        <input class="form-control w-25" type="text" name="content" label="add comment">--}}
         <input type="hidden" name="post" value="{{ $post->id }}">
         <button type="submit" class="btn btn-primary">add comment</button>
     </form>
@@ -41,9 +40,9 @@
     <br/>
 
     <ul class="list-group">
-        <?php foreach($comments as $key=>$value): ?>
+        @foreach($comments as $key=>$value)
             <li class="list-group-item"><?= $value['content']; ?></li>
-        <?php endforeach; ?>
+        @endforeach
     </ul>
 
 </x-layouts.base>
