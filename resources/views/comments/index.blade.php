@@ -9,6 +9,11 @@
 
             {{ $comment->created_at}}
             {{ $comment->content }}
+            <a href="{{ route('post.show', [$comment->post_id]) }}">
+                {{ $comment->content }}
+
+            </a>
+
 
         </div>
 
