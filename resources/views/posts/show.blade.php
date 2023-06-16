@@ -1,7 +1,7 @@
 @php
     //    $comments = \App\Models\Comment::where('post_id', '=', $post->id)->get();
     //    $cmt = $post->comment;
-        $comments = $post->comment()->orderByDesc('created_at')->get();
+        $comments = $post->comment()->where('status', '=' ,'approved')->orderByDesc('created_at')->get();
 @endphp
 
 <x-layouts.base title="category">

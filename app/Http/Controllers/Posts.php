@@ -3,8 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Category;
-use Illuminate\Http\Request;
+//use Illuminate\Http\Request;
 use App\Models\Post;
+use App\Http\Requests\Post\Save as SaveRequest;
 
 class Posts extends Controller
 {
@@ -18,13 +19,13 @@ class Posts extends Controller
         return view('posts.create');
     }
 
-    public function store(Request $request)
+    public function store(SaveRequest $request)
     {
-        $request->validate([
-            'title' => 'required|min:2|max:100',
-            'content' => 'required',
-            'category_id' => 'required',
-        ]);
+//        $request->validate([
+//            'title' => 'required|min:2|max:100',
+//            'content' => 'required',
+//            'category_id' => 'required',
+//        ]);
 
         $data = $request->only(['title', 'content', 'category_id']);
         Post::create($data);
@@ -34,7 +35,7 @@ class Posts extends Controller
     public function show($id)
     {
         $post = Post::findOrFail($id);
-        $comments = $post->comment()->orderByDesc('created_at')->get();
+        $comments = $post->comment()->where('status', '=' ,'approved')->orderByDesc('created_at')->get();
 //        dd($comments);
         return view('posts.show', compact('post', 'comments'));
     }
@@ -45,14 +46,14 @@ class Posts extends Controller
         return view('posts.edit', compact('post'));
     }
 
-    public function update(Request $request, string $id)
+    public function update(SaveRequest $request, string $id)
     {
 
-        $request->validate([
-            'title' => 'required|min:2|max:100',
-            'content' => 'required|min:2',
-            'category_id' => 'required',
-        ]);
+//        $request->validate([
+//            'title' => 'required|min:2|max:100',
+//            'content' => 'required|min:2',
+//            'category_id' => 'required',
+//        ]);
 
         $post = Post::findOrFail($id);
         $data = $request->only('title', 'content', 'category_id');
