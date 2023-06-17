@@ -11,7 +11,7 @@
                text: "{{ $comment->content }}"
                 <div style="display: flex">
 
-                <a href="{{ route('post.show', [$comment->post_id]) }}">
+                <a href="{{ route('post.show', [$comment->id]) }}">
                     link to original post
                 </a>
 

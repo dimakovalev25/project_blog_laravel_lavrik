@@ -19,11 +19,12 @@
 
     {{--</form>--}}
 
-    <form method="post" action="{{ route('commentvideo.store', [$video->id]) }}">
+    <form method="post" action="{{ route('comment.store', [$video->id]) }}">
         @csrf
         <x-controls.input defval="{{ null }}" name="content" label="add comment" type="text"></x-controls.input>
         {{--        <input class="form-control w-25" type="text" name="content" label="add comment">--}}
-        <input type="hidden" name="post_id" value="{{ $video->id }}">
+        <input type="hidden" name="id" value="{{ $video->id }}">
+        <input type="hidden" name="for" value="video">
         <button type="submit" class="btn btn-primary">add comment</button>
     </form>
 

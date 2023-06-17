@@ -15,7 +15,7 @@ class Save extends FormRequest
         return [
             'title' => 'required|min:2|max:100',
             'content' => 'required',
-            'category_id' => 'required',
+            'category_id' => 'required'
         ];
     }
 

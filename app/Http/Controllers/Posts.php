@@ -39,9 +39,10 @@ class Posts extends Controller
     public function show($id)
     {
         $post = Post::findOrFail($id);
-        $comments = $post->comment()->where('status', '=' ,10)->orderByDesc('created_at')->get();
+//        $comments = $post->comment()->where('status', '=' ,10)->orderByDesc('created_at')->get();
+//        $comments = $post->comment()->orderByDesc('created_at')->get();
 //        dd($comments);
-        return view('posts.show', compact('post', 'comments'));
+        return view('posts.show', compact('post'));
     }
 
     public function edit(string $id)

@@ -16,6 +16,10 @@ class Comment extends Model
         'status' => enumStatusComment::class
     ];
 
+    public function commentable()
+    {
+        return $this->morphTo();
+    }
 
     public function post(){
         return $this->belongsTo(Post::class);

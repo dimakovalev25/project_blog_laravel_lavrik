@@ -1,7 +1,8 @@
 @php
     //    $comments = \App\Models\Comment::where('post_id', '=', $post->id)->get();
     //    $cmt = $post->comment;
-        $comments = $post->comment()->where('status', '=' ,10)->orderByDesc('created_at')->get();
+//        $comments = $post->comment()->where('status', '=' ,10)->orderByDesc('created_at')->get();
+//        $comments = $post->comment()->orderByDesc('created_at')->get();
 @endphp
 
 <x-layouts.base title="category">
@@ -31,7 +32,9 @@
         @csrf
         <x-controls.input defval="{{ null }}" name="content" label="add comment" type="text"></x-controls.input>
         {{--        <input class="form-control w-25" type="text" name="content" label="add comment">--}}
+        <input type="hidden" name="id" value="{{ $post->id }}">
         <input type="hidden" name="post_id" value="{{ $post->id }}">
+        <input type="hidden" name="for" value="post">
         <button type="submit" class="btn btn-primary">add comment</button>
     </form>
 
@@ -40,14 +43,14 @@
     <br/>
 
     <ul class="list-group">
-        @foreach($comments as $key=>$value)
-            <div style="display: flex; justify-content: space-between" class="list-group-item">
+{{--        @foreach($comments as $key=>$value)--}}
+{{--            <div style="display: flex; justify-content: space-between" class="list-group-item">--}}
 
-            <li ><?= $value['content']; ?></li>
-            <a href="{{ route('comment.show', $value['id']) }}">to comment...</a>
+{{--            <li ><?= $value['content']; ?></li>--}}
+{{--            <a href="{{ route('comment.show', $value['id']) }}">to comment...</a>--}}
 
-            </div>
-        @endforeach
+{{--            </div>--}}
+{{--        @endforeach--}}
     </ul>
 
 </x-layouts.base>

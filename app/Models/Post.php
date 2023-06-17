@@ -24,4 +24,8 @@ class Post extends Model
         dd($query);
      }
 
+    public function comments()
+    {
+        return $this->morphMany(Comment::class, 'commentable');
+    }
 }

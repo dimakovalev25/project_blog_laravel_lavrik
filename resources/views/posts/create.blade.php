@@ -5,9 +5,9 @@
 
 <x-layouts.base title="posts">
 
-    <h1>create posts page</h1>
+    <h1>create posts page!</h1>
     <br/>
-    <form action="/posts" method="post">
+    <form action="{{ route('post.store') }}" method="post">
         @csrf
 
         <x-controls.input name="title" type="text" label="Title:"></x-controls.input>

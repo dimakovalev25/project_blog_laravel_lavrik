@@ -9,8 +9,15 @@ use Illuminate\Http\Request;
 use App\Models\Comment;
 use App\Enums\Comment\Status as enumCommentStatus;
 
+use App\Http\Requests\Comment\Add as commentRequest;
+
 class Comments extends Controller
 {
+
+    const FOR_MODELS = [
+        'video' => Video::class,
+        'post' => Post::class
+    ];
     public function index()
     {
         $comments = Comment::with('post')->where('status', '=', 0)->orderByDesc('created_at')->get();
@@ -21,28 +28,35 @@ class Comments extends Controller
     }
 
 
-    public function store(Request $request)
+    public function store(commentRequest $request)
     {
-        $request->validate([
-            'content' => 'required|min:1|max:100',
-            'post_id' => 'required'
-        ]);
-        $data = $request->only('content', 'post_id');
+//        $request->validate([
+//            'content' => 'required|min:1|max:100',
+//            'post_id' => 'required'
+//        ]);
+//        $data = $request->only('content', 'post_id');
 
-        Comment::create($data);
-        return view('posts.show', ['post' => Post::findOrFail($data['post_id'])]);
+        $modelName = self::FOR_MODELS[$request->for];
+        $model = $modelName::findOrFail($request->id);
+        $model->comments()->create($request->only('content', 'id'));
+
+        $data = $request->validated();
+//        Comment::create($data);
+        return view('posts.show', ['post' => Post::findOrFail($data['id'])]);
 
     }
-    public function videostore(Request $request)
-    {
-        $request->validate([
-            'content' => 'required|min:1|max:100',
-            'post_id' => 'required'
-        ]);
-        $data = $request->only('content', 'post_id');
 
+    public function videostore(commentRequest $request)
+    {
+//        $request->validate([
+//            'content' => 'required|min:1|max:100',
+//            'post_id' => 'required'
+//        ]);
+//        $data = $request->only('content', 'post_id');
+
+        $data = $request->validated();
         Comment::create($data);
-        return view('videos.show', ['video' => Video::findOrFail($data['post_id'])]);
+        return view('videos.show', ['video' => Video::findOrFail($data['id'])]);
 
     }
 

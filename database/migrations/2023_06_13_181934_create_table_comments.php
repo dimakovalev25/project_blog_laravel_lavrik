@@ -13,10 +13,12 @@ return new class extends Migration
         Schema::create('comments', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
-            $table->softDeletes();
-            $table->foreignIdFor(Post::class)->constrained();
+            $table->morphs('commentable');
+//            $table->foreignIdFor(Post::class)->constrained();
             $table->string('content', 256);
             $table->smallInteger('status')->default(0);
+
+            $table->softDeletes();
         });
     }
     public function down()
