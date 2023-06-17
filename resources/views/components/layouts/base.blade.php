@@ -28,6 +28,8 @@
                 <br>
                 <x-naws.link route="post.index" :params="[]">posts</x-naws.link>
                 <br>
+                <x-naws.link route="video.index" :params="[]">videos</x-naws.link>
+                <br>
                 <x-naws.link route="category.index" :params="[]">categories</x-naws.link>
                 <br>
 

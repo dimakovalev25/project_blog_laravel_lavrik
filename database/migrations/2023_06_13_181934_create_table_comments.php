@@ -16,7 +16,7 @@ return new class extends Migration
             $table->softDeletes();
             $table->foreignIdFor(Post::class)->constrained();
             $table->string('content', 256);
-            $table->string('post', 256);
+            $table->smallInteger('status')->default(0);
         });
     }
     public function down()

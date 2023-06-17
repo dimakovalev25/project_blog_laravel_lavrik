@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Requests\Post;
+namespace App\Http\Requests\Video;
 
 use Illuminate\Foundation\Http\FormRequest;
 
@@ -14,18 +14,7 @@ class Save extends FormRequest
     {
         return [
             'title' => 'required|min:2|max:100',
-            'content' => 'required',
-            'category_id' => 'required',
+            'url'=>'required'
         ];
     }
-
-    public function attributes()
-    {
-
-        return [
-          'title' => 'TITLE!',
-          'content' => 'CONTENT!'
-        ];
-    }
-
 }

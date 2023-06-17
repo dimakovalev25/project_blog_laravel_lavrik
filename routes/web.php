@@ -4,6 +4,7 @@ use App\Http\Controllers\CategoriesAdmin;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Posts;
 use App\Http\Controllers\Persons;
+use App\Http\Controllers\Videos;
 use App\Http\Controllers\Categories;
 use App\Http\Controllers\Main;
 use App\Http\Controllers\Comments;
@@ -13,10 +14,22 @@ Route::get('/', [Main::class, 'index'])->name('welcom');
 
 Route::prefix('/comments')->controller(Comments::class)->group(function () {
     Route::get('/', 'index')->name('comment.index');
+    Route::get('/{id}', 'show')->name('comment.show');
     Route::put('/{id}/update', 'update')->name('comment.update');
     Route::delete('/{id}','destroy')->name('comment.destroy');
 });
 
+
+Route::prefix('/videos')->controller(Videos::class)->group(function (){
+    Route::get('/', 'index')->name('video.index');
+    Route::get('/create', 'create')->name('video.create');
+    Route::post('/', 'store')->name('video.store');
+    Route::get('/{id}', 'show')->name('video.show');
+    Route::get('/{id}/edit', 'edit')->name('video.edit');
+    Route::put('/{id}/update', 'update')->name('video.update');
+    Route::delete('/{id}', 'destroy')->name('video.destroy');
+});
+Route::post('/videos/{id}', [Comments::class, 'videostore'])->name('commentvideo.store');
 Route::post('/posts/{id}', [Comments::class, 'store'])->name('comment.store');
 
 Route::prefix('/posts')->controller(Posts::class)->group(function () {

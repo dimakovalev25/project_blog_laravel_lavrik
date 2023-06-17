@@ -27,7 +27,11 @@ class Posts extends Controller
 //            'category_id' => 'required',
 //        ]);
 
-        $data = $request->only(['title', 'content', 'category_id']);
+//        $data = $request->only(['title', 'content', 'category_id']);
+
+        $data = $request->validated();
+//        dd($data);
+
         Post::create($data);
         return redirect('/posts');
     }
@@ -35,7 +39,7 @@ class Posts extends Controller
     public function show($id)
     {
         $post = Post::findOrFail($id);
-        $comments = $post->comment()->where('status', '=' ,'approved')->orderByDesc('created_at')->get();
+        $comments = $post->comment()->where('status', '=' ,10)->orderByDesc('created_at')->get();
 //        dd($comments);
         return view('posts.show', compact('post', 'comments'));
     }
