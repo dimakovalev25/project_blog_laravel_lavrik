@@ -38,25 +38,11 @@ class Comments extends Controller
 
         $modelName = self::FOR_MODELS[$request->for];
         $model = $modelName::findOrFail($request->id);
-        $model->comments()->create($request->only('content', 'id'));
+        $model->comments()->create($request->only('content'));
 
         $data = $request->validated();
 //        Comment::create($data);
         return view('posts.show', ['post' => Post::findOrFail($data['id'])]);
-
-    }
-
-    public function videostore(commentRequest $request)
-    {
-//        $request->validate([
-//            'content' => 'required|min:1|max:100',
-//            'post_id' => 'required'
-//        ]);
-//        $data = $request->only('content', 'post_id');
-
-        $data = $request->validated();
-        Comment::create($data);
-        return view('videos.show', ['video' => Video::findOrFail($data['id'])]);
 
     }
 
