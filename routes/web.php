@@ -29,7 +29,6 @@ Route::prefix('/videos')->controller(Videos::class)->group(function (){
     Route::put('/{id}/update', 'update')->name('video.update');
     Route::delete('/{id}', 'destroy')->name('video.destroy');
 });
-Route::post('/videos/{id}', [Comments::class, 'videostore'])->name('commentvideo.store');
 Route::post('/posts/{id}', [Comments::class, 'store'])->name('comment.store');
 
 Route::prefix('/posts')->controller(Posts::class)->group(function () {

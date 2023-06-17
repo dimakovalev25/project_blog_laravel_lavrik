@@ -17,7 +17,7 @@
     <br/>
     <a href="{{route('post.edit', [$post->id])}}">edit post</a>
     <br/>
-
+    <hr>
 
     <form method="post" action="{{ route('post.destroy', [$post->id]) }}">
         @csrf
@@ -27,11 +27,10 @@
 
 
     <hr>
-
+    <x-layouts.notification></x-layouts.notification>
     <form method="post" action="{{ route('comment.store', [$post->id]) }}">
         @csrf
         <x-controls.input defval="{{ null }}" name="content" label="add comment" type="text"></x-controls.input>
-        {{--        <input class="form-control w-25" type="text" name="content" label="add comment">--}}
         <input type="hidden" name="id" value="{{ $post->id }}">
         <input type="hidden" name="post_id" value="{{ $post->id }}">
         <input type="hidden" name="for" value="post">

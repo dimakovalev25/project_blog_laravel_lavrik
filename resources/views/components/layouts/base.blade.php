@@ -32,14 +32,17 @@
                 <br>
                 <x-naws.link route="category.index" :params="[]">categories</x-naws.link>
                 <br>
+                <x-naws.link route="comment.index" :params="[]">all comments</x-naws.link>
+                <br>
 
-{{--                <x-layouts.navlink></x-layouts.navlink>--}}
+                {{--                <x-layouts.navlink></x-layouts.navlink>--}}
 
-{{--                //old navbar--}}
-{{--                <x-layouts.navlink :links="  array(['title'=>'home','href'=>'/','class'=>'active'],['title'=>'posts','href'=>'/posts','class'=>''],['title'=>'categories','href'=>'/categories','class'=>''])  "></x-layouts.navlink>--}}
+                {{--                //old navbar--}}
+                {{--                <x-layouts.navlink :links="  array(['title'=>'home','href'=>'/','class'=>'active'],['title'=>'posts','href'=>'/posts','class'=>''],['title'=>'categories','href'=>'/categories','class'=>''])  "></x-layouts.navlink>--}}
 
             </div>
             <main class="col col-12 col-md-9">
+
                 {{$slot}}
             </main>
         </div>

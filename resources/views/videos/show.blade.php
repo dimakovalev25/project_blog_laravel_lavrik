@@ -1,14 +1,16 @@
 <x-layouts.base title="video">
 
-    <h1>video page</h1>
+
+    <h1>video page!</h1>
     <br/>
     <br/>
     <hr>
-    <h3>title: {{ $video->title }}</h3>
-    <h3>url: <a href="#">{{ $video->url }}</a></h3>
+    <h3>{{ $video->title }}</h3>
+    <h5>{{ $video->title }}</h5>
+    <em>{{ $video->created_at }}</em>
+    <h5>url: <a href="#">{{ $video->url }}</a></h5>
+    <br/>
     <hr>
-    <br/>
-    <br/>
     {{--<a href="{{route('video.edit', [$video->id])}}">edit video</a>--}}
     {{--<br/>--}}
     {{--<br/>--}}
@@ -19,6 +21,7 @@
 
     {{--</form>--}}
 
+        <x-layouts.notification></x-layouts.notification>
     <form method="post" action="{{ route('comment.store', [$video->id]) }}">
         @csrf
         <x-controls.input defval="{{ null }}" name="content" label="add comment" type="text"></x-controls.input>
