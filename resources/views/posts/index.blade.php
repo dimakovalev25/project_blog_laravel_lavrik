@@ -11,7 +11,11 @@
     <hr>
     <h3>{{ $post->title }}</h3>
     <h5>{{ $post->content }}</h5>
-    <em>{{ $post->created_at }}</em>
+    <h7>comments:  {{ $post->comments_count }}</h7>
+    <br/>
+
+    <h7>{{ $post->created_at }}</h7>
+
     <a href="/posts/{{$post->id}}">more...</a>
 
     <hr>

@@ -5,7 +5,7 @@
 
 @endphp
 @if($hasMess)
-    <h6 style="color: green">
+    <h6 style="color: green" class="mb-4 alert alert-{{$message[$mess]['type']}}">
         {{ $message[$mess]['text'] }}</h6>
 
 @endif

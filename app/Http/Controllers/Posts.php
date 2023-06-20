@@ -11,7 +11,9 @@ class Posts extends Controller
 {
     public function index()
     {
-        return view('posts.index', ['posts' => Post::all()]);
+        $posts = Post::withCount('comments')->orderByDesc('created_at')->get();
+        return view ('posts.index', compact('posts'));
+//        return view('posts.index', ['posts' => Post::all()]);
     }
 
     public function create()

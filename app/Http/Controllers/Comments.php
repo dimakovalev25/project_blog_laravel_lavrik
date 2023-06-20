@@ -16,10 +16,10 @@ class Comments extends Controller
         'post' => Post::class
     ];
 
-//    const MODELS_REDIRECT = [
-//        Video::class => 'video.show',
-//        Post::class => 'posts.show'
-//    ];
+    const MODELS_REDIRECT = [
+        Video::class => 'video.show',
+        Post::class => 'posts.show'
+    ];
     public function index()
     {
         $comments = Comment::with('post')->where('status', '=', 0)->orderByDesc('created_at')->get();
@@ -34,6 +34,12 @@ class Comments extends Controller
         $model->comments()->create($request->only('content'));
 
         $request->session()->flash('notification', 'comment.added');
+
+//        return redirect()->route(
+//            self::MODELS_REDIRECT[$model->commentable_type],
+//            [ $model->commentable_id ]
+//        );
+
 
         if ($modelName === 'App\Models\Post') {
             $data = $request->validated();
