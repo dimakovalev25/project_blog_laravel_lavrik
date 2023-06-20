@@ -15,7 +15,15 @@ class Save extends FormRequest
         return [
             'title' => 'required|min:2|max:100',
             'content' => 'required',
-            'category_id' => 'required'
+            'category_id' => 'required',
+            'tags' => 'required|array|min:1'
+        ];
+    }
+
+    public function messages()
+    {
+        return [
+            'tags.required' => 'add min 1 tag'
         ];
     }
 
@@ -23,8 +31,8 @@ class Save extends FormRequest
     {
 
         return [
-          'title' => 'TITLE!',
-          'content' => 'CONTENT!'
+          'title' => 'title!',
+          'content' => 'content!'
         ];
     }
 

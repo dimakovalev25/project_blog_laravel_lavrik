@@ -15,9 +15,10 @@
 <select
     name="{{ $name }}"
     id="{{ $id }}"
-    class="form-select w-25"
+    class="form-select w-25 @error($name) is-invalid @enderror"
+
     aria-label="Default select example">
-{{--    <option selected>Open this select menu</option>--}}
+    {{--    <option selected>Open this select menu</option>--}}
     @foreach($options as $op)
         <option value="{{ $op['id'] }}"> {{ $op['title'] }} </option>
     @endforeach

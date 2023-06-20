@@ -19,6 +19,7 @@
 <input id="{{ $id }}"
        type="{{$type}}"
        class="form-control w-25"
+       @error($name) is-invalid @enderror
        name="{{ $name }}"
        value="{{old($name) ?? $defval}}">
 @error($name)

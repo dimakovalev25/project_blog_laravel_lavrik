@@ -11,7 +11,7 @@
     $id = $name . bin2hex(random_bytes(6));
 @endphp
 
-<label for="{{ $id }}" class="mt-3 w-100 mb-2 form-group"> {{$label}}
+<label for="{{ $id }}" class="mt-3 w-100 mb-2 form-group"> {{$label}}</label>
 <select
     class="form-select w-25"
     aria-label="Default select example">
@@ -22,6 +22,7 @@
         <option value="{{ $value }}"> {{ $text}} </option>
     @endforeach
 
-
 </select>
-</label>
+@error($name)
+<div class="invalid-feedback">{{ $message }}</div>
+@enderror

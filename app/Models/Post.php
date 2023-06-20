@@ -9,7 +9,9 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 class Post extends Model
 {
     use HasFactory, SoftDeletes;
-    protected $guarded = [];
+//    protected $guarded = [];
+
+    protected $fillable = ['title', 'content', 'category_id'];
 
     public function category() {
         return $this->belongsTo(Category::class);
@@ -21,11 +23,14 @@ class Post extends Model
 
      public function scopeRecent($query){
         return $query->orderBy('title')->get();
-        dd($query);
      }
 
     public function comments()
     {
         return $this->morphMany(Comment::class, 'commentable');
+    }
+
+    public function tags(){
+        return $this->belongsToMany(Tag::class);
     }
 }

@@ -32,6 +32,8 @@
                 <br>
                 <x-naws.link route="category.index" :params="[]">categories</x-naws.link>
                 <br>
+                <x-naws.link route="tag.index" :params="[]">tags</x-naws.link>
+                <br>
                 <x-naws.link route="comment.index" :params="[]">all comments</x-naws.link>
                 <br>
 
