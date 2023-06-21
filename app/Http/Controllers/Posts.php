@@ -48,15 +48,22 @@ class Posts extends Controller
     public function edit(string $id)
     {
         $post = Post::findOrFail($id);
-        return view('posts.edit', compact('post'));
+//        $tags = Tag::orderByDesc('title')->pluck('title', 'id');
+        $tags = Tag::all();
+        return view('posts.edit', compact('post', 'tags'));
     }
 
     public function update(SaveRequest $request, string $id)
-    {
-
+    {   $data = $request->validated();
         $post = Post::findOrFail($id);
-        $data = $request->only('title', 'content', 'category_id');
         $post->update($data);
+        $post->tags()->sync($data['tags']);
+
+//        $post = Post::findOrFail($id);
+//        $data = $request->only('title', 'content', 'category_id');
+//        $tags = $request->only('tags');
+//        $post->update($data);
+//        $post->tags()->sync($data['tags']);
         return redirect()->route('post.index');
     }
 
